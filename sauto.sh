@@ -26,7 +26,7 @@ fi
 spath=$(pwd)
 
 # 判断这个类型是否预处理  即是否执行过 sh squick -a type.apk -t type -d 1 -g 1
-
+cd res
 # 原始包资源信息
 res_dir="srdef${apk_type}"  
 oapk_path="sdef${apk_type}.apk"
@@ -38,7 +38,7 @@ fi
 
 # 生成标识
 key=${site_id}_${apk_type}_${soft_id}
-dir=tmp/${key}
+dir=${spath}/tmp/${key}
 
 # 清理
 function cls(){
@@ -91,7 +91,7 @@ jks_ali="mjb_common"
 jks_pass="123456"
 
 # 应用信息
-jb_icon="jb${apk_type}.png"   #角标信息
+jb_icon="${spath}/jb${apk_type}.png"   #角标信息
 default_app_name=@string/app_name
 icon_name=ic_launcher.png     #icon名称
 icon_name_dir=""
@@ -159,7 +159,7 @@ if [[ -e $apk_type.config ]];then
 fi
 
 # 转换图片
-convert ${icon_path} -resize 90x90! -alpha Set thumbnail_lighting.png \
+convert ${icon_path} -resize 90x90! -alpha Set "${spath}/thumbnail_lighting.png" \
           \( -clone 0,1 -alpha Opaque -compose Hardlight -composite \) \
           -delete 0 -compose In -composite \
           "${dir}/${key}.png"
@@ -184,7 +184,7 @@ if [[ -e $apk_type.sh ]];then
     sh $apk_type.sh ${dir} ${apk_type}
 fi
 
-java -jar apktool-kk.jar b "${dir}/srdef${apk_type}"
+java -jar ${spath}/apktool-kk.jar b "${dir}/srdef${apk_type}"
 
 cp -f sdef${apk_type}.apk ${dir}/sdef${apk_type}.apk
 cp -f "${dir}/srdef${apk_type}/build/apk/AndroidManifest.xml" "${dir}/AndroidManifest.xml"
@@ -237,10 +237,11 @@ fi
 
 
 # 签名
-java -jar ${spath}/apksigner.jar sign -v2-signing-enabled false --ks ${spath}/${jks_path} --ks-key-alias ${jks_ali}  --ks-pass pass:${jks_pass} --key-pass pass:${jks_pass} --out ${apk_name}.apk sdef${apk_type}.apk
+java -jar ${spath}/apksigner.jar sign -v2-signing-enabled false --ks ${spath}/res/${jks_path} --ks-key-alias ${jks_ali}  --ks-pass pass:${jks_pass} --key-pass pass:${jks_pass} --out ${apk_name}.apk sdef${apk_type}.apk
 
 if [[ ! -e "${apk_name}.apk" ]];then
    echo "E: jarsigner sign error"
+   cls
    exit
 fi
 

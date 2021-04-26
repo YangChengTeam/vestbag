@@ -15,9 +15,9 @@ function usage() {
     exit
 }
 
-
+spath=$(pwd)
 # 进程管理
-if [[ $1 == "pm"  and $2 == "start" ]];then
+if [[ $1 == "pm"  &&  $2 == "start" ]];then
    pm2 delete auto.js
    pm2 start auto.js --name auto$3 -i 8
    pm2 save
@@ -25,30 +25,30 @@ if [[ $1 == "pm"  and $2 == "start" ]];then
    exit
 fi
 
-if [[  $1 == "pm"  and $2 == "restart" ]];then
+if [[  $1 == "pm" && $2 == "restart" ]];then
    pm2 restart auto.js
    exit
 fi
 
-if [[  $1 == "pm"  and $2 == "stop" ]];then
+if [[  $1 == "pm" && $2 == "stop" ]];then
    pm2 stop auto.js
    exit
 fi
 
-if [[  $1 == "pm"  and $2 == "log" ]];then
+if [[  $1 == "pm"  && $2 == "log" ]];then
    pm2 log
    exit
 fi
 
 # 文件管理
-if [[ $1 == "fs"  and $2 == "clean" ]];then
+if [[ $1 == "fs" && $2 == "clean" ]];then
    pm2 stop auto.js
    sh rm_tmp.sh
    pm2 restart auto.js
    exit
 fi
 
-if [[ $1 == "fs"  and $2 == "check" ]];then
+if [[ $1 == "fs"  && $2 == "check" ]];then
 	echo "正在检测有效性"
    node rm_invalid_apk_main.js $3
    exit
@@ -98,7 +98,7 @@ if [[ ${soft_type} == "-" ]];then
     exit
 fi
 
-if [[ -e ${apk} ]]; then
+if [[ -e res/${apk} ]]; then
       if [[ ! -e ../Uploads/apk/${soft_type}/ ]]; then
          echo "W: 目录../Uploads/apk/${soft_type}/不存在"
          mkdir -p ../Uploads/apk/${soft_type}/
@@ -131,7 +131,7 @@ if [[ -e ${apk} ]]; then
       fi 
 elif [[ ${is_gen_test_apk} == 1 ]];then
 	echo "正在打本地测试包test${soft_type}.apk"
-	sh sauto.sh test${soft_type}.apk test "test.png" ${soft_type}test ${soft_type} "test" "" "test" "10000" 0
+	sh sauto.sh "${spath}/res/test${soft_type}.apk" test "test.png" test${soft_type} ${soft_type} "test" "" "test" "10000" 0
 else
    echo "E: 文件${apk}不存在，请先上传${apk}"
 fi
