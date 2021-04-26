@@ -44,10 +44,11 @@ install_node(){
         echo "node 未安装 执行安装命令..."
         curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
         yum -y install nodejs    
-        npm i
     else
        echo "nodejs 已安装"
     fi
+
+    npm i
 
     if check_command pm2; then
         npm install -g pm2
