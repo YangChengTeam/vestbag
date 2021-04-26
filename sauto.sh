@@ -38,7 +38,6 @@ fi
 
 # 生成标识
 key=${site_id}_${apk_type}_${soft_id}
-# 可能中断过的包 极小概率 进程并发
 dir=tmp/${key}
 
 # 清理
@@ -46,6 +45,7 @@ function cls(){
    rm -rf "${dir}"
 }
 
+# 可能中断过的包 极小概率 进程并发
 if [[ -d ${dir} ]];then
    echo "E: 正在打包中..."
    exit
