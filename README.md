@@ -25,13 +25,13 @@
 ### 2. 打包
 - 上传所需文件
     - 拿到需要打包的马甲类型id (比例：48 )
-        - 将需要打包apk命名为48.apk 以及签名文件redguess.jks  上传到Scripts
+        - 将需要打包apk命名为48.apk 以及签名文件redguess.jks  上传到Scripts/res
         - 如需角标 
             - 文件名角标jb48.png 
             - 文件大小格式按![jb.png](res/jb.png)
 - 执行预打包脚本
     - 执行 **sh squick.sh -a 48.apk -t 48 -d 1 -g 1**
-    - 会生成一个48.config 在其中配置签名信息
+    - 会生成一个res/48.config 在其中配置签名信息
         - 在其后追加签名信息 比如
            - jks_path="redguess.jks"<br/>
              jks_ali="redguess"<br/>
