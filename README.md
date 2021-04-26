@@ -75,7 +75,7 @@
 
 - 3.q&a test 和 res 做什么用的
    - Scripts下的test目录是测试相关的
-   - res是马甲包相关
+   - Scripts下的res是马甲包相关的
 
 
 
