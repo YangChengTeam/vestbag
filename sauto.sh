@@ -16,21 +16,23 @@ is_change_package_name=${10}  #是否换包名
 channel_info=${11} #渠道信息
 img=${12} #需要下载的图标
 
+
+
+# 当前脚本路径
+spath=$(pwd)
+
+cd res
 # 检测thumbnail_lighting文件是否存在
 if  [[ ! -e "thumbnail_lighting.png" ]];then
    echo "thumbnail_lighting.png不存在"
    exit
 fi
 
-# 当前脚本路径
-spath=$(pwd)
-
-# 判断这个类型是否预处理  即是否执行过 sh squick -a type.apk -t type -d 1 -g 1
-cd res
 # 原始包资源信息
 res_dir="srdef${apk_type}"  
 oapk_path="sdef${apk_type}.apk"
 
+# 判断这个类型是否预处理  即是否执行过 sh squick -a type.apk -t type -d 1 -g 1
 if [[ ! -e ${oapk_path} || ! -d ${res_dir} ]];then
    echo "E: 类型:${apk_type} 原始包资源信息不存在"
    exit
@@ -159,7 +161,7 @@ if [[ -e $apk_type.config ]];then
 fi
 
 # 转换图片
-convert ${icon_path} -resize 90x90! -alpha Set "${spath}/thumbnail_lighting.png" \
+convert ${icon_path} -resize 90x90! -alpha Set "thumbnail_lighting.png" \
           \( -clone 0,1 -alpha Opaque -compose Hardlight -composite \) \
           -delete 0 -compose In -composite \
           "${dir}/${key}.png"
