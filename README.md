@@ -12,7 +12,7 @@
     - 执行 **git clone https://github.com/YangChengTeam/vestbag.git Scripts**
     - 执行 **cd  Scripts**
     - 执行 **sh install.sh**
-    - 命名结束后  再次执行**sh install.sh**检测环境是否安装成功
+    - 命令完成后  再次执行**sh install.sh**检测环境是否安装成功
 - zip安装
     - 查看unzip是否已安装
        - 执行 **unzip**
