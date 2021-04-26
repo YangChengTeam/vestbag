@@ -5,6 +5,10 @@
 ### 1. 安装环境步骤
 
 -  git安装
+    - 查看git是否已安装
+      - 执行 **git**
+       - 如未安装
+         - 执行 **yum -y install git**
     - 执行 **git clone https://github.com/YangChengTeam/vestbag.git Scripts**
     - 执行 **cd  Scripts**
     - 执行 **sh install.sh**
@@ -55,7 +59,7 @@
          - 执行 **dos2unix \*.sh**
          - 执行 **dos2unix \*.js**
 
-- 2.q&a. squick.sh 有哪些功
+- 2.q&a. squick.sh 有哪些功能
    - 执行 **sh squick.sh -h** 获取帮助
    - 执行 **sh squick.sh -a 48.apk -t 48 -d 1 -g 1** 预处理资源 更新母包 删除所有马甲包文件 并打一个测试包
    - 执行 **sh squick.sh -t 48 -g 1**  仅打一个测试包
