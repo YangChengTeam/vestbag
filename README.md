@@ -23,7 +23,7 @@
     - 命令完成后  再次执行**sh install.sh**检测环境是否安装成功
 
 ### 2. 打包
-- 上传所需文件
+- 上传所需文件到Scripts/res
     - 拿到需要打包的马甲类型id (比例：48 )
         - 将需要打包apk命名为48.apk 以及签名文件redguess.jks  上传到Scripts/res
         - 如需角标 
@@ -40,8 +40,8 @@
 - 观察日志是否测试包已打成功
    - 未成功
       - 分析原因解决
-- 测试test48.apk
-   - 下载test48.apk到本地
+- 测试test/test48.apk
+   - 下载test/test48.apk到本地
    - 查看版本号 签名等信息
    - 安装测试是否正常
 - 运行打包进程
@@ -72,6 +72,10 @@
 
    - 执行 **sh squick fs check**  检测包的有效性
    - 执行 **sh squick fs clean**  清理临时文件
+
+- 3.q&a test 和 res 做什么用的
+   - Scripts下的test目录是测试相关的
+   - res是马甲包相关
 
 
 

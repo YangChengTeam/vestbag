@@ -42,9 +42,7 @@ fi
 
 # 文件管理
 if [[ $1 == "fs" && $2 == "clean" ]];then
-   pm2 stop auto.js
    sh rm_tmp.sh
-   pm2 restart auto.js
    exit
 fi
 
@@ -98,7 +96,9 @@ if [[ ${soft_type} == "-" ]];then
     exit
 fi
 
-if [[ -e res/${apk} ]]; then
+
+if [[ ${apk} != "-" ]];then
+   if [[ -e res/${apk} ]]; then
       if [[ ! -e ../Uploads/apk/${soft_type}/ ]]; then
          echo "W: 目录../Uploads/apk/${soft_type}/不存在"
          mkdir -p ../Uploads/apk/${soft_type}/
@@ -112,7 +112,7 @@ if [[ -e res/${apk} ]]; then
 
       if [[ ${is_copy} == 1 ]];then
          echo "I: 复制母包到../Uploads/apk/${soft_type}/"
-         cp ${apk} ../Uploads/apk/${soft_type}/def.apk
+         cp res/${apk} ../Uploads/apk/${soft_type}/def.apk
       fi
 
       if [[ ${is_del_apk} == 1 ]]; then
@@ -126,14 +126,17 @@ if [[ -e res/${apk} ]]; then
       fi  
 
       if [[ ${is_gen_test_apk} == 1 ]];then
-          echo "正在打本地测试包test${soft_type}.apk"
-          sh sauto.sh test${soft_type}.apk test "test.png" ${soft_type}test ${soft_type} "test" "" "test" "10000" 0
+          echo "正在打本地测试包${spath}/test/test${soft_type}.apk"
+	       sh sauto.sh "${spath}/test/test${soft_type}.apk" test "${spath}/test/test.png" test${soft_type} ${soft_type} "test" "" "test" "10000" 0
       fi 
+   else 
+      echo "E: res/${apk} 文件不存在"
+   fi
 elif [[ ${is_gen_test_apk} == 1 ]];then
-	echo "正在打本地测试包test${soft_type}.apk"
-	sh sauto.sh "${spath}/res/test${soft_type}.apk" test "test.png" test${soft_type} ${soft_type} "test" "" "test" "10000" 0
+	 echo "正在打本地测试包${spath}/test/test${soft_type}.apk"
+	       sh sauto.sh "${spath}/test/test${soft_type}.apk" test "${spath}/test/test.png" test${soft_type} ${soft_type} "test" "" "test" "10000" 0
 else
-   echo "E: 文件${apk}不存在，请先上传${apk}"
+   echo "E: 缺少参数 -a apk"
 fi
 
 
