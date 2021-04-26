@@ -70,7 +70,7 @@
    - 执行 **sh squick pm stop**  停止进程
    - 执行 **sh squick pm log**  进程日志
 
-   - 执行 **sh squick fs check**  检测包的有效性
+   - 执行 **sh squick fs check 48**  检测包的有效性
    - 执行 **sh squick fs clean**  清理临时文件
 
 - 3.q&a test 和 res 做什么用的
