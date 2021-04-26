@@ -20,7 +20,7 @@
          - 执行 **yum -y install unzip**
     - 执行 **unzip -d Scripts vestbag.zip**
     - 执行 **cd  Scripts**
-    - 命名结束后  再次执行**sh install.sh**检测环境是否安装成功
+    - 命令完成后  再次执行**sh install.sh**检测环境是否安装成功
 
 ### 2. 打包
 - 上传所需文件
