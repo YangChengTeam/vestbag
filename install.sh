@@ -44,7 +44,7 @@ install_node(){
         echo "node 未安装 执行安装命令..."
         curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
         yum -y install nodejs    
-        npm install redis request request-promise xml2js
+        npm i
     else
        echo "nodejs 已安装"
     fi
