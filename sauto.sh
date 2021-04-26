@@ -15,8 +15,8 @@ soft_id=${9}      #软件id
 is_change_package_name=${10}  #是否换包名
 channel_info=${11} #渠道信息
 img=${12} #需要下载的图标
-# 清理
 
+# 检测thumbnail_lighting文件是否存在
 if  [[ ! -e "thumbnail_lighting.png" ]];then
    echo "thumbnail_lighting.png不存在"
    exit
@@ -41,6 +41,7 @@ key=${site_id}_${apk_type}_${soft_id}
 # 可能中断过的包 极小概率 进程并发
 dir=tmp/${key}
 
+# 清理
 function cls(){
    rm -rf "${dir}"
 }
