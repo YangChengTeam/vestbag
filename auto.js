@@ -149,8 +149,12 @@ function processInfo(info) {
 
 	var dir = uploadsDir + info.type + path.sep + path.dirname(info.apk_path).split(path.sep).pop()
 	if (!fs.existsSync(dir)) {
-		fs.mkdirSync(dir)
-		console.log("I: 创建" + dir)
+		try {
+			fs.mkdirSync(dir)
+			console.log("I: 创建" + dir)
+		}catch(e){
+			console.error("E: 创建失败")
+		}
 	}
 }
 

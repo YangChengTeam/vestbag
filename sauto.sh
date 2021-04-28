@@ -47,9 +47,9 @@ function cls(){
    rm -rf "${dir}"
 }
 
-# 可能中断过的包 极小概率 进程并发
+# 可能中断过的包 极小概率 或者 进程并发
 if [[ -d ${dir} ]];then
-   echo "E: 正在打包中..."
+   echo "E: 正在打包中, 已退出"
    exit
 fi
 
